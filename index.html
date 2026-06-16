@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>보험 설계용 고지사항 입력 시스템</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="workspace" aria-labelledby="page-title">
+        <div class="header">
+          <div>
+            <p class="eyebrow">Disclosure request system</p>
+            <h1 id="page-title">보험 설계용 고지사항 입력 시스템</h1>
+          </div>
+        </div>
+
+        <form id="requestForm" class="form">
+          <section class="panel">
+            <h2>기본 정보</h2>
+            <div class="grid two">
+              <label>
+                <span>설계번호</span>
+                <input id="designNumber" type="text" placeholder="예: RQ2638152297" autocomplete="off" />
+              </label>
+              <label>
+                <span>고객명 <b>*</b></span>
+                <input id="customerName" type="text" placeholder="예: 홍길동" autocomplete="off" />
+              </label>
+              <label>
+                <span>성별</span>
+                <select id="gender">
+                  <option value="">선택</option>
+                  <option value="남성">남성</option>
+                  <option value="여성">여성</option>
+                </select>
+              </label>
+              <label>
+                <span>생년월일</span>
+                <input id="birthDate" type="text" placeholder="예: 1990.01.01" autocomplete="off" />
+              </label>
+              <label>
+                <span>직업</span>
+                <input id="job" type="text" placeholder="예: 사무직" autocomplete="off" />
+              </label>
+<label>
+  <span>친권자(법정대리인)</span>
+  <input id="legalGuardian" type="text" placeholder="예: 이고은" autocomplete="off" />
+</label>
+
+<label>
+  <span>수익자</span>
+  <input id="beneficiary" type="text" placeholder="예: 법정상속인" autocomplete="off" />
+</label>
+
+<label>
+  <span>관계</span>
+  <input id="relationship" type="text" placeholder="예: 모" autocomplete="off" />
+</label>
+            </div>
+            <label>
+              <span>추가 요청사항</span>
+              <textarea id="requestItems" rows="3" placeholder="예: 암치료비 추가&#10;순환계치료비 추가&#10;수술비 증액"></textarea>
+            </label>
+          </section>
+
+          <section class="panel">
+            <h2>설계 방향 선택</h2>
+            <fieldset>
+              <legend>보장 항목</legend>
+              <div class="check-grid">
+                <label><input type="checkbox" name="coverageFocus" value="사망" /> 사망</label>
+                <label><input type="checkbox" name="coverageFocus" value="후유장해" /> 후유장해</label>
+                <label><input type="checkbox" name="coverageFocus" value="실손" /> 실손</label>
+                <label><input type="checkbox" name="coverageFocus" value="암" /> 암</label>
+                <label><input type="checkbox" name="coverageFocus" value="뇌질환" /> 뇌질환</label>
+                <label><input type="checkbox" name="coverageFocus" value="심장질환" /> 심장질환</label>
+                <label><input type="checkbox" name="coverageFocus" value="수술비" /> 수술비</label>
+                <label><input type="checkbox" name="coverageFocus" value="입원비" /> 입원비</label>
+                <label><input type="checkbox" name="coverageFocus" value="간병비" /> 간병비</label>
+                <label><input type="checkbox" name="coverageFocus" value="요양/치매" /> 요양/치매</label>
+                <label><input type="checkbox" name="coverageFocus" value="운전자" /> 운전자</label>
+                <label><input type="checkbox" name="coverageFocus" value="일상생활배상책임" /> 일상생활배상책임</label>
+                <label><input type="checkbox" name="coverageFocus" value="화재" /> 화재</label>
+                <label><input type="checkbox" name="coverageFocus" value="벌금" /> 벌금</label>
+                <label><input type="checkbox" name="coverageFocus" value="깁스" /> 깁스</label>
+                <label><input type="checkbox" name="coverageFocus" value="골절" /> 골절</label>
+                <label><input id="coverageOtherToggle" type="checkbox" /> 기타 직접입력</label>
+              </div>
+              <input id="coverageOther" class="is-hidden" type="text" placeholder="기타 보장 항목 입력" />
+            </fieldset>
+
+            <fieldset>
+              <legend>보험료 가격대</legend>
+              <div class="segmented price-choice">
+                <label><input type="radio" name="premiumRange" value="5~10만원" /><span>5~10만원</span></label>
+                <label><input type="radio" name="premiumRange" value="10~15만원" /><span>10~15만원</span></label>
+                <label><input type="radio" name="premiumRange" value="15~20만원" /><span>15~20만원</span></label>
+                <label><input type="radio" name="premiumRange" value="custom" /><span>직접입력</span></label>
+              </div>
+              <input id="premiumCustom" class="is-hidden" type="text" placeholder="예: 12만원 전후" />
+            </fieldset>
+
+            <fieldset>
+              <legend>설계 목적</legend>
+              <div class="check-grid">
+                <label><input type="checkbox" name="designPurpose" value="저렴한 기본형" /> 저렴한 기본형</label>
+                <label><input type="checkbox" name="designPurpose" value="진단비 중심" /> 진단비 중심</label>
+                <label><input type="checkbox" name="designPurpose" value="수술비 중심" /> 수술비 중심</label>
+                <label><input type="checkbox" name="designPurpose" value="실손 보완형" /> 실손 보완형</label>
+                <label><input type="checkbox" name="designPurpose" value="가족 생활비 대비형" /> 가족 생활비 대비형</label>
+                <label><input type="checkbox" name="designPurpose" value="노후 간병 대비형" /> 노후 간병 대비형</label>
+                <label><input type="checkbox" name="designPurpose" value="운전자/일배책 포함형" /> 운전자/일배책 포함형</label>
+                <label><input type="checkbox" name="designPurpose" value="종합 보장형" /> 종합 보장형</label>
+                <label><input id="purposeOtherToggle" type="checkbox" /> 기타 직접입력</label>
+              </div>
+              <input id="purposeOther" class="is-hidden" type="text" placeholder="기타 설계 목적 입력" />
+            </fieldset>
+          </section>
+
+          <section class="panel">
+            <h2>중대 질환 및 약물 복용 확인</h2>
+            <div class="check-grid">
+              <label><input type="checkbox" name="majorDisease" value="암" /> 암</label>
+              <label><input type="checkbox" name="majorDisease" value="뇌질환" /> 뇌질환</label>
+              <label><input type="checkbox" name="majorDisease" value="심장질환" /> 심장질환</label>
+              <label><input type="checkbox" name="majorDisease" value="당뇨" /> 당뇨</label>
+              <label><input type="checkbox" name="majorDisease" value="고혈압" /> 고혈압</label>
+              <label><input type="checkbox" name="majorDisease" value="고지혈증" /> 고지혈증</label>
+              <label><input type="checkbox" name="majorDisease" value="정신과 질환" /> 정신과 질환</label>
+              <label><input type="checkbox" name="majorDisease" value="간질환" /> 간질환</label>
+              <label><input type="checkbox" name="majorDisease" value="신장질환" /> 신장질환</label>
+              <label><input id="majorOtherToggle" type="checkbox" /> 기타 직접입력</label>
+            </div>
+            <input id="majorOther" class="is-hidden" type="text" placeholder="기타 중대질환 입력" />
+
+            <fieldset>
+              <legend>약 복용 여부</legend>
+              <div class="segmented compact">
+                <label>
+                  <input type="radio" name="medicationStatus" value="none" checked />
+                  <span>없음</span>
+                </label>
+                <label>
+                  <input type="radio" name="medicationStatus" value="yes" />
+                  <span>있음</span>
+                </label>
+              </div>
+            </fieldset>
+            <div id="medicationDetails" class="detail-box is-hidden">
+              <div class="grid three">
+                <label>
+                  <span>질환명</span>
+                  <input id="medDisease" type="text" />
+                </label>
+                <label>
+                  <span>약물명</span>
+                  <input id="medName" type="text" />
+                </label>
+                <label>
+                  <span>복용기간</span>
+                  <input id="medPeriod" type="text" placeholder="예: 2024.01~현재" />
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="section-toolbar">
+              <h2>3개월 이내 고지사항</h2>
+              <button id="addNoticeButton" class="secondary-button" type="button">고지사항 추가</button>
+            </div>
+            <div id="noticeList" class="notice-list"></div>
+          </section>
+
+          <section class="panel">
+            <fieldset>
+              <legend>5년 이내 고지사항</legend>
+              <div class="segmented compact">
+                <label><input type="radio" name="fiveYearStatus" value="none" checked /><span>없음</span></label>
+                <label><input type="radio" name="fiveYearStatus" value="yes" /><span>있음</span></label>
+              </div>
+            </fieldset>
+            <div id="fiveYearDetails" class="detail-box is-hidden">
+              <div class="section-toolbar">
+                <h2>5년 이내 고지사항</h2>
+                <button id="addFiveYearButton" class="secondary-button" type="button">5년 이내 고지 추가</button>
+              </div>
+              <div id="fiveYearList" class="notice-list"></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <fieldset>
+              <legend>10년 이내 고지사항</legend>
+              <div class="segmented compact">
+                <label><input type="radio" name="tenYearStatus" value="none" checked /><span>없음</span></label>
+                <label><input type="radio" name="tenYearStatus" value="yes" /><span>있음</span></label>
+              </div>
+            </fieldset>
+            <div id="tenYearDetails" class="detail-box is-hidden">
+              <div class="section-toolbar">
+                <h2>10년 이내 고지사항</h2>
+                <button id="addTenYearButton" class="secondary-button" type="button">10년 이내 고지 추가</button>
+              </div>
+              <div id="tenYearList" class="notice-list"></div>
+            </div>
+          </section>
+        </form>
+      </section>
+
+      <aside class="preview" aria-labelledby="preview-title">
+        <div class="preview-heading">
+          <div>
+            <h2 id="preview-title">최종 설계 요청문</h2>
+            <p id="copyStatus" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+        <div class="action-bar">
+          <button id="copyButton" type="button">복사</button>
+          <button id="kakaoCopyButton" type="button">카카오톡 전송용 복사</button>
+          <button id="insurerCopyButton" type="button">보험사 제출용 출력</button>
+          <button id="pdfButton" type="button">PDF 저장</button>
+          <button id="excelButton" type="button">엑셀 저장</button>
+        </div>
+        <div id="warningList" class="warning-list" aria-live="polite"></div>
+        <pre id="output"></pre>
+      </aside>
+    </main>
+
+    <template id="noticeTemplate">
+      <article class="notice-card">
+        <div class="notice-card-head">
+          <h3>고지사항 <span data-notice-number></span></h3>
+          <button class="danger-button" type="button" data-remove-notice>삭제</button>
+        </div>
+
+        <div class="grid two">
+          <label>
+            <span>병명 <b>*</b></span>
+            <input data-notice-field="disease" type="text" placeholder="예: 눈 다래끼" />
+          </label>
+          <label>
+            <span>진료일 <b>*</b></span>
+            <input data-notice-field="date" type="date" />
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>진료형태</legend>
+          <div class="segmented three-choice">
+            <label><input type="radio" data-notice-field="careType" value="통원" checked /><span>통원</span></label>
+            <label><input type="radio" data-notice-field="careType" value="입원" /><span>입원</span></label>
+            <label><input type="radio" data-notice-field="careType" value="응급실" /><span>응급실</span></label>
+          </div>
+        </fieldset>
+
+        <label>
+          <span>방문횟수</span>
+          <input data-notice-field="visits" type="number" min="1" value="1" />
+        </label>
+
+        <fieldset>
+          <legend>치료방법</legend>
+          <div class="check-grid treatment-grid">
+            <label><input type="checkbox" data-treatment value="약처방" /> 약처방</label>
+            <label><input type="checkbox" data-treatment value="물리치료" /> 물리치료</label>
+            <label><input type="checkbox" data-treatment value="주사치료" /> 주사치료</label>
+            <label><input type="checkbox" data-treatment value="시술" /> 시술</label>
+            <label><input type="checkbox" data-treatment value="수술" /> 수술</label>
+            <label><input type="checkbox" data-treatment value="검사만 시행" /> 검사만 시행</label>
+            <label><input type="checkbox" data-treatment-other-toggle /> 기타 직접입력</label>
+          </div>
+          <input class="is-hidden" data-treatment-other type="text" placeholder="예: 냉동치료, 휴식 권고" />
+        </fieldset>
+
+        <fieldset>
+          <legend>완치 여부</legend>
+          <div class="segmented three-choice">
+            <label><input type="radio" data-notice-field="recovery" value="완치" checked /><span>완치</span></label>
+            <label><input type="radio" data-notice-field="recovery" value="치료중" /><span>치료중</span></label>
+            <label><input type="radio" data-notice-field="recovery" value="경과관찰" /><span>경과관찰</span></label>
+          </div>
+        </fieldset>
+
+        <label>
+          <span>비고</span>
+          <textarea data-notice-field="memo" rows="2" placeholder="예: 약 처방 없음"></textarea>
+        </label>
+      </article>
+    </template>
+
+    <template id="fiveYearTemplate">
+      <article class="notice-card">
+        <div class="notice-card-head">
+          <h3>5년 이내 고지 <span data-five-number></span></h3>
+          <button class="danger-button" type="button" data-remove-five-year>삭제</button>
+        </div>
+        <div class="grid two">
+          <label>
+            <span>구분 <b>*</b></span>
+            <select data-five-field="type">
+              <option value="입원">입원</option>
+              <option value="수술">수술</option>
+            </select>
+          </label>
+          <label>
+            <span>병명 <b>*</b></span>
+            <input data-five-field="disease" type="text" placeholder="예: 폐렴" />
+          </label>
+          <label>
+            <span>날짜</span>
+            <input data-five-field="date" type="date" />
+          </label>
+          <label>
+            <span>현재상태</span>
+            <input data-five-field="state" type="text" placeholder="예: 완치" />
+          </label>
+        </div>
+        <label>
+          <span>상세내용</span>
+          <textarea data-five-field="detail" rows="3" placeholder="예: 5일 입원 후 완치"></textarea>
+        </label>
+      </article>
+    </template>
+
+    <template id="tenYearTemplate">
+      <article class="notice-card">
+        <div class="notice-card-head">
+          <h3>10년 이내 고지 <span data-ten-number></span></h3>
+          <button class="danger-button" type="button" data-remove-ten-year>삭제</button>
+        </div>
+        <div class="grid two">
+          <label>
+            <span>구분 <b>*</b></span>
+            <select data-ten-field="type">
+              <option value="암">암</option>
+              <option value="뇌질환">뇌질환</option>
+              <option value="심장질환">심장질환</option>
+              <option value="기타 중대질환">기타 중대질환</option>
+            </select>
+          </label>
+          <label>
+            <span>진단명/질환명 <b>*</b></span>
+            <input data-ten-field="disease" type="text" placeholder="예: 갑상선암" />
+          </label>
+          <label>
+            <span>날짜</span>
+            <input data-ten-field="date" type="date" />
+          </label>
+          <label>
+            <span>현재상태</span>
+            <input data-ten-field="state" type="text" placeholder="예: 완치" />
+          </label>
+        </div>
+        <label>
+          <span>상세내용</span>
+          <textarea data-ten-field="detail" rows="3" placeholder="진단, 치료, 추적관찰 내용을 입력"></textarea>
+        </label>
+      </article>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
