@@ -662,20 +662,13 @@ pdfButton.addEventListener("click", () => {
 excelButton.addEventListener("click", exportExcel);
 
 addNotice({
-  disease: "눈 다래끼",
-  date: "2026-05-02",
+  disease: "",
+  date: "",
   careType: "통원",
-  visits: "1",
+  visits: "",
   treatments: ["약처방"],
   recovery: "완치",
 });
-addNotice({
-  disease: "발바닥 사마귀",
-  date: "2026-05-02",
-  careType: "통원",
-  visits: "1",
-  otherTreatment: "냉동치료",
-  recovery: "완치",
-});
+
 
 renderOutput();
