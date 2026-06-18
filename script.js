@@ -174,7 +174,7 @@ function addTenYearNotice(prefill = {}) {
   const card = fragment.querySelector(".notice-card");
 
   card.dataset.tenYearId = ++tenYearIdCounter;
-  card.querySelector('[data-ten-field="type"]').value = prefill.type ?? "암";
+  card.querySelector('[data-ten-field="type"]').value = prefill.type ?? "입원";
   card.querySelector('[data-ten-field="disease"]').value = prefill.disease ?? "";
   card.querySelector('[data-ten-field="date"]').value = prefill.date ?? "";
   card.querySelector('[data-ten-field="state"]').value = prefill.state ?? "";
